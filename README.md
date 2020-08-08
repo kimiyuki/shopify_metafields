@@ -1,4 +1,4 @@
-# shopify_metafields
+# judge.me reviews for upsert to metafields
 
 1. get my site's reviews from Judge.me.
 2. grouping reveiws by product and write those in json format.
