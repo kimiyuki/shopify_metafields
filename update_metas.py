@@ -24,8 +24,8 @@ def upsertMetaInProduct(pid, SHOPIFY_USER, SHOPIFY_PW, dpath, reviews):
     response = requests.get(url)
     r = response.json()
     myreviews = list(filter(lambda x: x['namespace'] =="shirai" and x['key']=="myreviews", r['metafields']))
-        # update
     if len(myreviews) > 0:
+        # update
         mid = myreviews[0]['id']
         print(f"update {mid}") 
         url = "https://{SHOPIFY_USER}:{SHOPIFY_PW}@{dpath}/products/{pid}/metafields/{mid}.json".format(
