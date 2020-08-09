@@ -8,7 +8,6 @@ ipython = "*"
 
 [packages]
 requests = "*"
-pandas = "*"
 python-dotenv = "*"
 
 [requires]
