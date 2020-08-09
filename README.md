@@ -6,4 +6,6 @@
 4. upsert ld+json data as metafields data to each product.
 5. (not here) edit the liquid code(might be microdata.liquid file).
 
-It requires to write .env file for your environment. 
+It requires to 
+ - write .env file for your environment. 
+ - set up your private app. https://help.shopify.com/en/manual/apps/private-apps
