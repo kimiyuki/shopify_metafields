@@ -5,3 +5,5 @@
 3. transform the json to ld+json format for the microdata for SEO.
 4. upsert ld+json data as metafields data to each product.
 5. (not here) edit the liquid code(might be microdata.liquid file).
+
+It requires to write .env file for your environment. 
