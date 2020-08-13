@@ -62,6 +62,7 @@ def write_ld_json(pid):
   ld_json = {
       "@context": "http://schema.org",
       "@type": "Product",
+      "@id": f"https://fukushima-ichiba.com/products/{reviews[0]['product_handle']}#product",
       "name": reviews[0]["product_title"],
       "aggregateRating": {
           "@type": "AggregateRating",
