@@ -24,7 +24,8 @@ def retrieve_judgeme(JUDGEME_TOKEN, JUDGEME_DOMAIN):
 
   #while idx < 50 or 
   with open("data/reviews.json", "w") as f:
-    json.dump(reviews, f, indent=2, ensure_ascii=False)
+    json.dump([x for x in reviews if x['curated'] != 'spam'],
+               f, indent=2, ensure_ascii=False)
 
   str_prd = "product_external_id"
   j = json.load(open("data/reviews.json", "r"))
@@ -45,7 +46,10 @@ def write_ld_json(pid):
       ld_review = {
           "@type": "Review",
           "name": r["title"],
-          "author": r["reviewer"]["name"],
+          "author": {
+            "@type": "Person",
+            "name": r["reviewer"]["name"]
+          },
           "datePublished": dt.strptime(r["updated_at"], "%Y-%m-%dT%H:%M:%S+00:00")
           .replace(tzinfo=jst)
           .strftime("%Y-%m-%d"),

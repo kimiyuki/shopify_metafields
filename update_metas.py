@@ -7,11 +7,11 @@ import os
 import re
 import time
 
-http.client.HTTPConnection.debuLevel = 2
+http.client.HTTPConnection.debugLevel = 2
 logging.basicConfig()
-logging.getLogger().setLevel(logging.DEBUG)
+logging.getLogger().setLevel(logging.ERROR)
 req_log = logging.getLogger("requests.packages.urllib3")
-req_log.setLevel(logging.DEBUG)
+req_log.setLevel(logging.ERROR)
 req_log.propagate = True
 
 from settings import SHOPIFY_PW, SHOPIFY_USER, SHOP_DOMAIN
