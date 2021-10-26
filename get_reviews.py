@@ -7,20 +7,23 @@ import pytz
 import os
 import re
 from settings import JUDGEME_DOMAIN, JUDGEME_TOKEN
+import time
 
 def retrieve_judgeme(JUDGEME_TOKEN, JUDGEME_DOMAIN):
   reviews = []
   idx = 1
-  while idx < 50:
+  while idx < 500:
     url = "https://judge.me/api/v1/reviews?api_token={JUDGEME_TOKEN}&shop_domain={JUDGEME_DOMAIN}&page={idx}".format( **locals())
-    print(f"page:{idx}")
+    print(url)
     response = requests.get(url)
     r = response.json()
+    print(f"page:{idx} {len(r['reviews'])}")
     reviews += r['reviews']
     if(int(r['per_page']) != len(r['reviews'])):
       print(f"break at {r['current_page']}")
       break 
     idx = idx + 1
+    time.sleep(1)
 
   #while idx < 50 or 
   with open("data/reviews.json", "w") as f:
@@ -88,5 +91,5 @@ def write_for_files(files):
 retrieve_judgeme(JUDGEME_TOKEN, JUDGEME_DOMAIN)
 files = [entry.path for entry in os.scandir("data/products") if entry.is_file()] 
 for pid in write_for_files(files):
-  print(f"write {pid}")
+  #print(f"write {pid}")
   write_ld_json(pid)
